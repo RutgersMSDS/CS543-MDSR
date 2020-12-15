@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>maxK</title>
+    <style>
+        table,th,td {border: 1px solid black;}
+    </style>
+   <style>
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #container {
+        width: 100%;
+        height: 75%;
+        margin: 0;
+  padding-right: 110px;
+  padding-left: 110px;
+  padding-bottom: 20px;
+      }
+    </style>
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-core.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-cartesian.min.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+<div class="media">
+  <img src="https://www.universetoday.com/wp-content/uploads/2013/10/milky_way.jpg" class="align-self-start mr-3" alt="..."
+       width="{{100}}" height="{{100}}" >
+  <div class="media-body">
+    <h2 class="mt-0">Milky Way Bulge PSF Photometry Visualization</h2>
+    <h2>Statistics</h2>
+  </div>
+</div>
+
+
+</head>
+<body>
+
+    <blockquote class="blockquote text-center">
+        <button type="button" class="btn btn-light btn-sm"><a href="/minKh">Minimum</a></button>
+        <button type="button" class="btn btn-light btn-sm">Maximum</button>
+        <button type="button" class="btn btn-light btn-sm"><a href="/meanKh">Average</a></button>
+    </blockquote>
+    <blockquote class="blockquote text-center">
+        <button type="button" class="btn btn-light btn-sm">Bar Chart</button>
+        <button type="button" class="btn btn-light btn-sm"><a href="/maxK">Map</a></button>
+    </blockquote>
+
+
+
+
+
+    <div id="container"></div>
+
+    <script>
+anychart.onDocumentReady(function () {
+
+var data = [
+['201', 23.2459],
+['202', 23.0854],
+['203', 23.7171],
+['204', 23.6351],
+['205', 22.9965],
+['206', 23.1304],
+['207', 23.1667],
+['208', 23.6472],
+['209', 22.938],
+['210', 23.031],
+['211', 23.579],
+['212', 23.0097],
+['213', 23.1219],
+['214', 23.2835],
+['215', 23.3278],
+['216', 23.6607],
+['217', 23.7715],
+['218', 23.815],
+['219', 23.286],
+['220', 23.3203],
+['221', 23.0425],
+['222', 23.5226],
+['223', 23.3956],
+['224', 23.6159],
+['225', 23.5128],
+['226', 23.5547],
+['227', 22.9111],
+['228', 23.1951],
+['229', 23.125],
+['230', 22.8925],
+['231', 22.869],
+['232', 23.4588],
+['233', 23.7259],
+['234', 23.063],
+['235', 22.8239],
+['236', 23.009],
+['237', 23.6371],
+['238', 23.5315],
+['239', 23.214],
+['240', 23.054],
+['241', 23.3649],
+['242', 23.2437],
+['243', 22.9138],
+['244', 23.2558],
+['245', 23.426],
+['246', 23.1149],
+['247', 23.5058],
+['248', 23.3576],
+['249', 23.155],
+['250', 23.5447],
+['251', 23.8882],
+['252', 23.4243],
+['253', 23.437],
+['254', 23.9095],
+['255', 23.1619],
+['256', 23.529],
+['257', 23.714],
+['258', 23.2031],
+['259', 23.402],
+['260', 23.5951],
+['261', 23.1695],
+['262', 23.2386],
+['263', 23.6685],
+['264', 23.5971],
+['265', 23.5505],
+['266', 23.442],
+['267', 23.257],
+['268', 23.3929],
+['269', 23.293],
+['270', 23.1915],
+['271', 23.037],
+['272', 23.151],
+['273', 23.4635],
+['274', 23.2377],
+['275', 23.5265],
+['276', 23.49],
+['277', 23.737],
+['278', 23.3822],
+['279', 24.0966],
+['280', 23.648],
+['281', 23.9776],
+['282', 23.271],
+['283', 23.774],
+['284', 23.7],
+['285', 23.056],
+['286', 23.1569],
+['287', 23.0109],
+['288', 23.254],
+['289', 23.4754],
+['290', 23.4615],
+['291', 23.5779],
+['292', 23.7819],
+['293', 23.3544],
+['294', 23.5562],
+['295', 23.1885],
+['296', 23.3824],
+['297', 23.3083],
+['298', 23.2834],
+['299', 23.4601],
+['300', 23.8285],
+['301', 23.314],
+['302', 23.4135],
+['303', 23.6789],
+['304', 23.9426],
+['305', 23.764],
+['306', 23.1365],
+['307', 23.7957],
+['308', 23.248],
+['309', 23.5637],
+['310', 23.4683],
+['311', 23.0294],
+['312', 23.813],
+['313', 23.4384],
+['314', 22.9636],
+['315', 23.455],
+['316', 23.1301],
+['317', 23.5502],
+['318', 23.746],
+['319', 23.654],
+['320', 23.7234],
+['321', 23.745],
+['322', 23.48],
+['323', 24.0269],
+['324', 23.7985],
+['325', 23.527],
+['326', 23.4105],
+['327', 23.4637],
+['328', 23.3599],
+['329', 22.9587],
+['330', 23.5001],
+['331', 23.1734],
+['332', 23.5085],
+['333', 23.4153],
+['334', 23.2746],
+['335', 23.6954],
+['336', 24.0023],
+['337', 23.552],
+['338', 23.5052],
+['339', 23.7382],
+['340', 23.6411],
+['341', 23.5457],
+['342', 23.32],
+['343', 23.52],
+['344', 23.7911],
+['345', 23.097],
+['346', 23.2963],
+['347', 23.738],
+['348', 23.6282],
+['349', 23.7567],
+['350', 23.855],
+['351', 23.7088],
+['352', 23.5735],
+['353', 23.4958],
+['354', 23.561],
+['355', 23.058],
+['356', 23.8638],
+['357', 23.9101],
+['358', 23.394],
+['359', 23.2685],
+['360', 23.461],
+['361', 23.499],
+['362', 23.4858],
+['363', 23.6545],
+['364', 23.689],
+['365', 23.6309],
+['366', 23.5989],
+['367', 23.3],
+['368', 23.5052],
+['369', 23.727],
+['370', 23.3252],
+['371', 23.1647],
+['372', 23.28],
+['373', 23.301],
+['374', 23.5236],
+['375', 23.815],
+['376', 23.3881],
+['377', 23.7124],
+['378', 23.7301],
+['379', 23.5102],
+['380', 23.4364],
+['381', 23.3769],
+['382', 23.3756],
+['383', 23.248],
+['384', 23.5535],
+['385', 23.593],
+['386', 23.0845],
+['387', 23.3202],
+['388', 23.408],
+['389', 23.7448],
+['390', 23.5523],
+['391', 23.4868],
+['392', 23.3444],
+['393', 23.4489],
+['394', 23.329],
+['395', 23.508],
+['396', 22.9805]
+];
+
+chart = anychart.column();
+var series = chart.column(data);
+
+chart.container("container");
+
+chart.xAxis().title('Tile');
+chart.yAxis().title('Magnitude (mag)');
+chart.xAxis().orientation("bottom");
+
+chart.xAxis().labels(false)
+chart.title("Maximum K Magnitude");
+chart.tooltip().format("{%value}");
+
+chart.draw();
+});
+
+</script>
+
+<blockquote class="blockquote text-center">
+        <button type="button" class="btn btn-light btn-sm"><a href="/generalJ">J Magnitude</a></button>
+        <button type="button" class="btn btn-light btn-sm">K Magnitude</button>
+        <button type="button" class="btn btn-light btn-sm"><a href="/bDist">Brightness Distribution</a></button>
+        <button type="button" class="btn btn-light btn-sm"><a href="/generalN">Number of Stars</a></button>
+    </blockquote>
+
+
+<center>
+
+    <button type="button" class="btn btn-light btn-lg"><a href="/home">HOME</a></button>
+</center>
+</body>
+
+<footer>
+
+</footer>
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>minK</title>
+    <style>
+        table,th,td {border: 1px solid black;}
+    </style>
+    <style>
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #container {
+        width: 100%;
+        height: 75%;
+        margin: 0;
+  padding-right: 110px;
+  padding-left: 110px;
+  padding-bottom: 20px;
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-core.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-cartesian.min.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+<div class="media">
+  <img src="https://www.universetoday.com/wp-content/uploads/2013/10/milky_way.jpg" class="align-self-start mr-3" alt="..."
+       width="{{100}}" height="{{100}}" >
+  <div class="media-body">
+    <h2 class="mt-0">Milky Way Bulge PSF Photometry Visualization</h2>
+    <h2>Statistics</h2>
+  </div>
+</div>
+
+
+</head>
+<body>
+
+    <blockquote class="blockquote text-center">
+        <button type="button" class="btn btn-light btn-sm">Minimum</button>
+        <button type="button" class="btn btn-light btn-sm"><a href="/maxKh">Maximum</a></button>
+        <button type="button" class="btn btn-light btn-sm"><a href="/meanKh">Average</a></button>
+    </blockquote>
+    <blockquote class="blockquote text-center">
+        <button type="button" class="btn btn-light btn-sm">Bar Chart</button>
+        <button type="button" class="btn btn-light btn-sm"><a href="/minK">Map</a></button>
+    </blockquote>
+
+
+
+
+
+    <div id="container"></div>
+
+    <script>
+anychart.onDocumentReady(function () {
+
+var data = [
+['201', 7.5485],
+['202', 7.807],
+['203', 7.4061],
+['204', 8.0101],
+['205', 7.8054],
+['206', 7.7964],
+['207', 7.4831],
+['208', 7.6757],
+['209', 7.1584],
+['210', 7.8882],
+['211', 7.7125],
+['212', 7.75],
+['213', 7.6672],
+['214', 7.8557],
+['215', 7.6936],
+['216', 7.339],
+['217', 7.5085],
+['218', 7.7427],
+['219', 7.1725],
+['220', 7.853],
+['221', 7.5064],
+['222', 7.0224],
+['223', 7.007],
+['224', 7.4133],
+['225', 7.5055],
+['226', 7.502],
+['227', 7.57],
+['228', 7.5905],
+['229', 7.1386],
+['230', 7.6655],
+['231', 7.585],
+['232', 7.184],
+['233', 7.5283],
+['234', 7.5254],
+['235', 7.406],
+['236', 7.266],
+['237', 7.472],
+['238', 7.0585],
+['239', 6.921],
+['240', 7.659],
+['241', 7.6213],
+['242', 7.782],
+['243', 7.1291],
+['244', 7.0019],
+['245', 7.8685],
+['246', 7.6426],
+['247', 7.555],
+['248', 7.3729],
+['249', 7.1425],
+['250', 7.2698],
+['251', 7.562],
+['252', 7.0342],
+['253', 7.064],
+['254', 7.5617],
+['255', 7.0537],
+['256', 7.1083],
+['257', 7.5752],
+['258', 7.2155],
+['259', 7.6425],
+['260', 7.3344],
+['261', 7.1084],
+['262', 7.3308],
+['263', 7.0357],
+['264', 7.554],
+['265', 7.515],
+['266', 7.6308],
+['267', 7.3395],
+['268', 7.2877],
+['269', 7.029],
+['270', 7.3719],
+['271', 7.4321],
+['272', 6.9673],
+['273', 7.3015],
+['274', 7.6229],
+['275', 7.163],
+['276', 7.0758],
+['277', 7.2851],
+['278', 7.0055],
+['279', 6.7475],
+['280', 7.1798],
+['281', 6.8033],
+['282', 7.409],
+['283', 7.116],
+['284', 7.4987],
+['285', 7.273],
+['286', 6.9431],
+['287', 6.8246],
+['288', 7.044],
+['289', 6.9744],
+['290', 6.8947],
+['291', 7.2456],
+['292', 7.0327],
+['293', 7.1447],
+['294', 7.109],
+['295', 7.587],
+['296', 7.324],
+['297', 7.4026],
+['298', 7.6654],
+['299', 6.551],
+['300', 7.055],
+['301', 7.252],
+['302', 6.8968],
+['303', 7.0539],
+['304', 6.8773],
+['305', 6.8145],
+['306', 7.0415],
+['307', 7.0006],
+['308', 6.92],
+['309', 7.0576],
+['310', 7.2672],
+['311', 7.4943],
+['312', 7.2848],
+['313', 7.0147],
+['314', 6.748],
+['315', 6.9874],
+['316', 7.016],
+['317', 6.8982],
+['318', 6.6778],
+['319', 6.8996],
+['320', 6.991],
+['321', 6.772],
+['322', 6.9735],
+['323', 6.8409],
+['324', 7.0937],
+['325', 7.157],
+['326', 7.2845],
+['327', 7.1083],
+['328', 6.9539],
+['329', 6.73],
+['330', 6.701],
+['331', 6.7587],
+['332', 6.7486],
+['333', 6.5682],
+['334', 6.69],
+['335', 6.9966],
+['336', 6.8521],
+['337', 7.049],
+['338', 7.0965],
+['339', 7.0998],
+['340', 7.0203],
+['341', 7.198],
+['342', 7.2481],
+['343', 6.9157],
+['344', 7.0005],
+['345', 6.919],
+['346', 6.6014],
+['347', 7.05],
+['348', 6.7727],
+['349', 6.8669],
+['350', 6.818],
+['351', 6.8085],
+['352', 7.0148],
+['353', 7.0937],
+['354', 6.7084],
+['355', 7.215],
+['356', 7.0938],
+['357', 6.8916],
+['358', 7.1566],
+['359', 6.704],
+['360', 6.7815],
+['361', 7.165],
+['362', 6.9195],
+['363', 7.1213],
+['364', 7.0498],
+['365', 7.342],
+['366', 7.3332],
+['367', 7.4075],
+['368', 7.477],
+['369', 7.272],
+['370', 7.3984],
+['371', 6.6568],
+['372', 6.9148],
+['373', 7.2959],
+['374', 7.012],
+['375', 7.246],
+['376', 7.005],
+['377', 7.0906],
+['378', 7.0518],
+['379', 7.1819],
+['380', 7.2899],
+['381', 7.2444],
+['382', 7.0503],
+['383', 7.0375],
+['384', 7.1141],
+['385', 7.2006],
+['386', 6.9312],
+['387', 7.0648],
+['388', 7.2595],
+['389', 6.6107],
+['390', 7.1632],
+['391', 6.9009],
+['392', 7.2234],
+['393', 7.0199],
+['394', 7.418],
+['395', 7.4181],
+['396', 6.7922]
+];
+
+chart = anychart.column();
+var series = chart.column(data);
+
+chart.container("container");
+
+chart.xAxis().title('Tile');
+chart.yAxis().title('Magnitude (mag)');
+chart.xAxis().orientation("bottom");
+
+chart.xAxis().labels(false)
+chart.title("Minimum K Magnitude");
+chart.tooltip().format("{%value}");
+
+chart.draw();
+});
+
+</script>
+
+<blockquote class="blockquote text-center">
+        <button type="button" class="btn btn-light btn-sm"><a href="/generalJ">J Magnitude</a></button>
+        <button type="button" class="btn btn-light btn-sm">K Magnitude</button>
+        <button type="button" class="btn btn-light btn-sm"><a href="/bDist">Brightness Distribution</a></button>
+        <button type="button" class="btn btn-light btn-sm"><a href="/generalN">Number of Stars</a></button>
+    </blockquote>
+
+
+<center>
+
+    <button type="button" class="btn btn-light btn-lg"><a href="/home">HOME</a></button>
+</center>
+</body>
+
+<footer>
+
+</footer>
+</html>

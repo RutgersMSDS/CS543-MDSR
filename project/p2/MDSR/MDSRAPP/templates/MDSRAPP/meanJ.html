@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>meanJ</title>
+    <style>
+        table,th,td {border: 1px solid black;}
+    </style>
+    <style>
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #container {
+        width: 100%;
+        height: 75%;
+        margin: 0;
+  padding-right: 110px;
+  padding-left: 110px;
+  padding-bottom: 20px;
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-core.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-heatmap.min.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+<div class="media">
+  <img src="https://www.universetoday.com/wp-content/uploads/2013/10/milky_way.jpg" class="align-self-start mr-3" alt="..."
+       width="{{100}}" height="{{100}}" >
+  <div class="media-body">
+    <h2 class="mt-0">Milky Way Bulge PSF Photometry Visualization</h2>
+    <h2>Statistics</h2>
+  </div>
+</div>
+
+
+</head>
+<body>
+
+    <blockquote class="blockquote text-center">
+        <button type="button" class="btn btn-light btn-sm"><a href="/minJ">Minimum</a></button>
+        <button type="button" class="btn btn-light btn-sm"><a href="/maxJ">Maximum</a></button>
+        <button type="button" class="btn btn-light btn-sm">Average</button>
+    </blockquote>
+    <blockquote class="blockquote text-center">
+        <button type="button" class="btn btn-light btn-sm"><a href="/meanJh">Bar Chart</a></button>
+        <button type="button" class="btn btn-light btn-sm">Map</button>
+    </blockquote>
+
+
+
+
+
+    <div id="container"></div>
+
+    <script>
+anychart.onDocumentReady(function () {
+
+var data = [
+{x: '1', y: '1', value: 18.878957149428278, label: '201'},
+{x: '2', y: '1', value: 18.76179144374661, label: '202'},
+{x: '3', y: '1', value: 18.820992831535595, label: '203'},
+{x: '4', y: '1', value: 18.773570708320875, label: '204'},
+{x: '5', y: '1', value: 18.14084707023752, label: '205'},
+{x: '6', y: '1', value: 18.649295986754268, label: '206'},
+{x: '7', y: '1', value: 18.27704897876682, label: '207'},
+{x: '8', y: '1', value: 18.617567722000334, label: '208'},
+{x: '9', y: '1', value: 18.319014283223066, label: '209'},
+{x: '10', y: '1', value: 18.209531858970845, label: '210'},
+{x: '11', y: '1', value: 18.525052056362483, label: '211'},
+{x: '12', y: '1', value: 18.57313646891038, label: '212'},
+{x: '13', y: '1', value: 18.711013951492728, label: '213'},
+{x: '14', y: '1', value: 18.526607902924518, label: '214'},
+{x: '1', y: '2', value: 18.64796844727536, label: '215'},
+{x: '2', y: '2', value: 18.56997451190617, label: '216'},
+{x: '3', y: '2', value: 18.60746435189157, label: '217'},
+{x: '4', y: '2', value: 18.559290334609976, label: '218'},
+{x: '5', y: '2', value: 18.251390999816238, label: '219'},
+{x: '6', y: '2', value: 18.245532614355948, label: '220'},
+{x: '7', y: '2', value: 18.445795020939425, label: '221'},
+{x: '8', y: '2', value: 18.455167267190564, label: '222'},
+{x: '9', y: '2', value: 18.193237693322484, label: '223'},
+{x: '10', y: '2', value: 18.347665270862827, label: '224'},
+{x: '11', y: '2', value: 18.393894808970813, label: '225'},
+{x: '12', y: '2', value: 18.449255303777964, label: '226'},
+{x: '13', y: '2', value: 18.583631331042522, label: '227'},
+{x: '14', y: '2', value: 18.211852164959094, label: '228'},
+{x: '1', y: '3', value: 18.387422503261178, label: '229'},
+{x: '2', y: '3', value: 18.50476121374874, label: '230'},
+{x: '3', y: '3', value: 18.130469907521242, label: '231'},
+{x: '4', y: '3', value: 18.426901432161433, label: '232'},
+{x: '5', y: '3', value: 18.405037333463046, label: '233'},
+{x: '6', y: '3', value: 18.399136617470752, label: '234'},
+{x: '7', y: '3', value: 18.158985917865493, label: '235'},
+{x: '8', y: '3', value: 17.976521331696077, label: '236'},
+{x: '9', y: '3', value: 18.311825680024732, label: '237'},
+{x: '10', y: '3', value: 18.31241849957995, label: '238'},
+{x: '11', y: '3', value: 18.087743765260853, label: '239'},
+{x: '12', y: '3', value: 18.15205312645036, label: '240'},
+{x: '13', y: '3', value: 18.39839182315061, label: '241'},
+{x: '14', y: '3', value: 18.193955390463984, label: '242'},
+{x: '1', y: '4', value: 18.20341633198086, label: '243'},
+{x: '2', y: '4', value: 18.34037338851577, label: '244'},
+{x: '3', y: '4', value: 17.943128298289988, label: '245'},
+{x: '4', y: '4', value: 18.20937164638828, label: '246'},
+{x: '5', y: '4', value: 18.107710695251697, label: '247'},
+{x: '6', y: '4', value: 18.129600224904042, label: '248'},
+{x: '7', y: '4', value: 17.838180347125743, label: '249'},
+{x: '8', y: '4', value: 18.003254998683406, label: '250'},
+{x: '9', y: '4', value: 17.9820100042113, label: '251'},
+{x: '10', y: '4', value: 17.99217627928168, label: '252'},
+{x: '11', y: '4', value: 17.852742183787406, label: '253'},
+{x: '12', y: '4', value: 17.953697180633174, label: '254'},
+{x: '13', y: '4', value: 18.094785659807314, label: '255'},
+{x: '14', y: '4', value: 18.180787555363644, label: '256'},
+{x: '1', y: '5', value: 18.422135161157275, label: '257'},
+{x: '2', y: '5', value: 18.01621643693619, label: '258'},
+{x: '3', y: '5', value: 17.87430582130562, label: '259'},
+{x: '4', y: '5', value: 17.924818951706953, label: '260'},
+{x: '5', y: '5', value: 17.803036185865633, label: '261'},
+{x: '6', y: '5', value: 17.799380167876134, label: '262'},
+{x: '7', y: '5', value: 17.74087993298178, label: '263'},
+{x: '8', y: '5', value: 17.494299701192865, label: '264'},
+{x: '9', y: '5', value: 17.488875945017472, label: '265'},
+{x: '10', y: '5', value: 17.380932261497456, label: '266'},
+{x: '11', y: '5', value: 17.62163514167585, label: '267'},
+{x: '12', y: '5', value: 17.590498894216864, label: '268'},
+{x: '13', y: '5', value: 17.72201498720983, label: '269'},
+{x: '14', y: '5', value: 17.99621123133093, label: '270'},
+{x: '1', y: '6', value: 18.30105116925424, label: '271'},
+{x: '2', y: '6', value: 18.029964750731295, label: '272'},
+{x: '3', y: '6', value: 17.792129818823884, label: '273'},
+{x: '4', y: '6', value: 17.557349425433177, label: '274'},
+{x: '5', y: '6', value: 17.569259747048758, label: '275'},
+{x: '6', y: '6', value: 17.44314162032013, label: '276'},
+{x: '7', y: '6', value: 17.381076067401825, label: '277'},
+{x: '8', y: '6', value: 17.37480753378552, label: '278'},
+{x: '9', y: '6', value: 17.409434414436017, label: '279'},
+{x: '10', y: '6', value: 17.39515106691368, label: '280'},
+{x: '11', y: '6', value: 17.44994958988818, label: '281'},
+{x: '12', y: '6', value: 17.414790348986976, label: '282'},
+{x: '13', y: '6', value: 17.585063067486313, label: '283'},
+{x: '14', y: '6', value: 17.951231572011107, label: '284'},
+{x: '1', y: '7', value: 18.054654220853593, label: '285'},
+{x: '2', y: '7', value: 18.050604787496106, label: '286'},
+{x: '3', y: '7', value: 17.589806677259556, label: '287'},
+{x: '4', y: '7', value: 17.191730947112106, label: '288'},
+{x: '5', y: '7', value: 17.50978975040073, label: '289'},
+{x: '6', y: '7', value: 17.315992716896034, label: '290'},
+{x: '7', y: '7', value: 17.118192232940853, label: '291'},
+{x: '8', y: '7', value: 16.974382209863684, label: '292'},
+{x: '9', y: '7', value: 16.986661045275085, label: '293'},
+{x: '10', y: '7', value: 17.25288689079184, label: '294'},
+{x: '11', y: '7', value: 17.435252628900347, label: '295'},
+{x: '12', y: '7', value: 17.376998088386852, label: '296'},
+{x: '13', y: '7', value: 17.408263635882214, label: '297'},
+{x: '14', y: '7', value: 17.855053464417598, label: '298'},
+{x: '1', y: '8', value: 17.952149669656976, label: '299'},
+{x: '2', y: '8', value: 17.824100304126606, label: '300'},
+{x: '3', y: '8', value: 17.34038033774947, label: '301'},
+{x: '4', y: '8', value: 17.375051377055147, label: '302'},
+{x: '5', y: '8', value: 17.49677550317536, label: '303'},
+{x: '6', y: '8', value: 17.705870062875356, label: '304'},
+{x: '7', y: '8', value: 16.55042777677951, label: '305'},
+{x: '8', y: '8', value: 16.665042989621803, label: '306'},
+{x: '9', y: '8', value: 16.876833717032163, label: '307'},
+{x: '10', y: '8', value: 17.339627852393185, label: '308'},
+{x: '11', y: '8', value: 17.77153066800744, label: '309'},
+{x: '12', y: '8', value: 18.152128803482807, label: '310'},
+{x: '13', y: '8', value: 17.496144820515966, label: '311'},
+{x: '14', y: '8', value: 17.931297662835476, label: '312'},
+{x: '1', y: '9', value: 18.51406780561464, label: '313'},
+{x: '2', y: '9', value: 18.47668371543716, label: '314'},
+{x: '3', y: '9', value: 17.902693011822542, label: '315'},
+{x: '4', y: '9', value: 17.4120131628423, label: '316'},
+{x: '5', y: '9', value: 17.737545354707677, label: '317'},
+{x: '6', y: '9', value: 18.05684450382336, label: '318'},
+{x: '7', y: '9', value: 17.219879610713516, label: '319'},
+{x: '8', y: '9', value: 16.8891936874544, label: '320'},
+{x: '9', y: '9', value: 17.53356543281992, label: '321'},
+{x: '10', y: '9', value: 17.723595195199902, label: '322'},
+{x: '11', y: '9', value: 18.041920278961346, label: '323'},
+{x: '12', y: '9', value: 18.163162342767897, label: '324'},
+{x: '13', y: '9', value: 17.989912113249368, label: '325'},
+{x: '14', y: '9', value: 18.04339059091163, label: '326'},
+{x: '1', y: '10', value: 18.36963452578437, label: '327'},
+{x: '2', y: '10', value: 18.90430762875923, label: '328'},
+{x: '3', y: '10', value: 18.460629486875042, label: '329'},
+{x: '4', y: '10', value: 17.73287829659954, label: '330'},
+{x: '5', y: '10', value: 18.352789583276273, label: '331'},
+{x: '6', y: '10', value: 17.872883278299355, label: '332'},
+{x: '7', y: '10', value: 18.461960325754365, label: '333'},
+{x: '8', y: '10', value: 18.11583310546734, label: '334'},
+{x: '9', y: '10', value: 18.231282028304896, label: '335'},
+{x: '10', y: '10', value: 17.785050912811194, label: '336'},
+{x: '11', y: '10', value: 17.94135839522172, label: '337'},
+{x: '12', y: '10', value: 18.24287474470336, label: '338'},
+{x: '13', y: '10', value: 17.943790803484273, label: '339'},
+{x: '14', y: '10', value: 18.314252226746646, label: '340'},
+{x: '1', y: '11', value: 18.31565613628542, label: '341'},
+{x: '2', y: '11', value: 18.589240874862806, label: '342'},
+{x: '3', y: '11', value: 18.27332022105816, label: '343'},
+{x: '4', y: '11', value: 18.00436186999274, label: '344'},
+{x: '5', y: '11', value: 17.27718668832036, label: '345'},
+{x: '6', y: '11', value: 17.103809829241488, label: '346'},
+{x: '7', y: '11', value: 17.067881019789404, label: '347'},
+{x: '8', y: '11', value: 17.209957326629894, label: '348'},
+{x: '9', y: '11', value: 17.26982788948952, label: '349'},
+{x: '10', y: '11', value: 17.503715662065392, label: '350'},
+{x: '11', y: '11', value: 17.629720491987243, label: '351'},
+{x: '12', y: '11', value: 17.8446913194503, label: '352'},
+{x: '13', y: '11', value: 17.901580503679405, label: '353'},
+{x: '14', y: '11', value: 18.023380942293453, label: '354'},
+{x: '1', y: '12', value: 18.234393719439602, label: '355'},
+{x: '2', y: '12', value: 18.19158430946539, label: '356'},
+{x: '3', y: '12', value: 18.261227276951058, label: '357'},
+{x: '4', y: '12', value: 18.00129621010087, label: '358'},
+{x: '5', y: '12', value: 17.509327632476086, label: '359'},
+{x: '6', y: '12', value: 17.260347245507116, label: '360'},
+{x: '7', y: '12', value: 17.40140339022054, label: '361'},
+{x: '8', y: '12', value: 17.2858443615417, label: '362'},
+{x: '9', y: '12', value: 17.490716934819282, label: '363'},
+{x: '10', y: '12', value: 17.53700937626204, label: '364'},
+{x: '11', y: '12', value: 17.5166560658367, label: '365'},
+{x: '12', y: '12', value: 17.7826635973962, label: '366'},
+{x: '13', y: '12', value: 17.888254029871394, label: '367'},
+{x: '14', y: '12', value: 18.147096766177505, label: '368'},
+{x: '1', y: '13', value: 18.049275285211962, label: '369'},
+{x: '2', y: '13', value: 18.034800221786746, label: '370'},
+{x: '3', y: '13', value: 17.900370540136052, label: '371'},
+{x: '4', y: '13', value: 17.855217552653624, label: '372'},
+{x: '5', y: '13', value: 17.852382395841392, label: '373'},
+{x: '6', y: '13', value: 17.651530421155666, label: '374'},
+{x: '7', y: '13', value: 17.6965362677423, label: '375'},
+{x: '8', y: '13', value: 17.927080478137857, label: '376'},
+{x: '9', y: '13', value: 17.853048130346814, label: '377'},
+{x: '10', y: '13', value: 17.67804931189367, label: '378'},
+{x: '11', y: '13', value: 17.764094158716286, label: '379'},
+{x: '12', y: '13', value: 17.951078682139716, label: '380'},
+{x: '13', y: '13', value: 18.074687683182614, label: '381'},
+{x: '14', y: '13', value: 18.206435390259937, label: '382'},
+{x: '1', y: '14', value: 17.952470583517705, label: '383'},
+{x: '2', y: '14', value: 18.164653032514327, label: '384'},
+{x: '3', y: '14', value: 17.84461402957079, label: '385'},
+{x: '4', y: '14', value: 17.86420448885398, label: '386'},
+{x: '5', y: '14', value: 17.774994733093727, label: '387'},
+{x: '6', y: '14', value: 17.435590319675445, label: '388'},
+{x: '7', y: '14', value: 18.149523014763634, label: '389'},
+{x: '8', y: '14', value: 18.500230046342335, label: '390'},
+{x: '9', y: '14', value: 18.236742734006473, label: '391'},
+{x: '10', y: '14', value: 17.86872366832329, label: '392'},
+{x: '11', y: '14', value: 17.85368131272299, label: '393'},
+{x: '12', y: '14', value: 17.835494665151487, label: '394'},
+{x: '13', y: '14', value: 18.14884524413736, label: '395'},
+{x: '14', y: '14', value: 17.717447305431886, label: '396'}
+];
+
+chart = anychart.heatMap(data);
+
+chart.container("container");
+chart.xScale().inverted(true);
+chart.yScale().inverted(false);
+chart.xAxis().title('Galactic Longitude (deg)');
+chart.yAxis().title('Galactic Latitude (deg)');
+chart.xAxis().orientation("bottom");
+chart.yAxis().labels(false)
+chart.xAxis().labels(false)
+chart.title("Average J Magnitude");
+chart.labels().format("{%label}");
+chart.tooltip().titleFormat("{%label}");
+chart.tooltip().format("{%value}");
+
+var customColorScale = anychart.scales.ordinalColor();
+customColorScale.ranges([
+  { less: 16.9999 },
+  { from: 17, to: 17.4999 },
+  { from: 17.5, to: 17.9999 },
+  { from: 18, to: 18.4999 },
+  { greater: 18.5 }
+]);
+
+customColorScale.colors(["#F9E79F", "#F5B041", "#E67E22", "#E74C3C", "#922B21"]);
+chart.colorScale(customColorScale);
+chart.legend(true);
+
+chart.draw();
+});
+
+</script>
+
+<blockquote class="blockquote text-center">
+        <button type="button" class="btn btn-light btn-sm">J Magnitude</button>
+        <button type="button" class="btn btn-light btn-sm"><a href="/generalK">K Magnitude</a></button>
+        <button type="button" class="btn btn-light btn-sm"><a href="/bDist">Brightness Distribution</a></button>
+        <button type="button" class="btn btn-light btn-sm"><a href="/generalN">Number of Stars</a></button>
+    </blockquote>
+
+
+<center>
+
+    <button type="button" class="btn btn-light btn-lg"><a href="/home">HOME</a></button>
+</center>
+</body>
+
+<footer>
+
+</footer>
+</html>

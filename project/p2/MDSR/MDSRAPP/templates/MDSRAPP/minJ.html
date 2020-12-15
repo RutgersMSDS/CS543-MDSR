@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>minJ</title>
+    <style>
+        table,th,td {border: 1px solid black;}
+    </style>
+    <style>
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #container {
+        width: 100%;
+        height: 75%;
+        margin: 0;
+  padding-right: 110px;
+  padding-left: 110px;
+  padding-bottom: 20px;
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-core.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-heatmap.min.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+<div class="media">
+  <img src="https://www.universetoday.com/wp-content/uploads/2013/10/milky_way.jpg" class="align-self-start mr-3" alt="..."
+       width="{{100}}" height="{{100}}" >
+  <div class="media-body">
+    <h2 class="mt-0">Milky Way Bulge PSF Photometry Visualization</h2>
+    <h2>Statistics</h2>
+  </div>
+</div>
+
+
+</head>
+<body>
+
+    <blockquote class="blockquote text-center">
+        <button type="button" class="btn btn-light btn-sm">Minimum</button>
+        <button type="button" class="btn btn-light btn-sm"><a href="/maxJ">Maximum</a></button>
+        <button type="button" class="btn btn-light btn-sm"><a href="/meanJ">Average</a></button>
+    </blockquote>
+    <blockquote class="blockquote text-center">
+        <button type="button" class="btn btn-light btn-sm"><a href="/minJh">Bar Chart</a></button>
+        <button type="button" class="btn btn-light btn-sm">Map</button>
+    </blockquote>
+
+
+
+
+
+    <div id="container"></div>
+
+    <script>
+anychart.onDocumentReady(function () {
+
+var data = [
+{x: '1', y: '1', value: 8.241509037159599, label: '201'},
+{x: '2', y: '1', value: 8.493716054158599, label: '202'},
+{x: '3', y: '1', value: 8.3787001827227, label: '203'},
+{x: '4', y: '1', value: 7.82775, label: '204'},
+{x: '5', y: '1', value: 8.516, label: '205'},
+{x: '6', y: '1', value: 8.4805, label: '206'},
+{x: '7', y: '1', value: 8.2605, label: '207'},
+{x: '8', y: '1', value: 8.44279166666665, label: '208'},
+{x: '9', y: '1', value: 7.928, label: '209'},
+{x: '10', y: '1', value: 8.445, label: '210'},
+{x: '11', y: '1', value: 8.575272624434401, label: '211'},
+{x: '12', y: '1', value: 8.4045, label: '212'},
+{x: '13', y: '1', value: 8.0929804192136, label: '213'},
+{x: '14', y: '1', value: 8.356, label: '214'},
+{x: '1', y: '2', value: 8.1128966031565, label: '215'},
+{x: '2', y: '2', value: 8.4754518612508, label: '216'},
+{x: '3', y: '2', value: 8.2107270417625, label: '217'},
+{x: '4', y: '2', value: 8.371, label: '218'},
+{x: '5', y: '2', value: 8.341000000000001, label: '219'},
+{x: '6', y: '2', value: 8.23141666666665, label: '220'},
+{x: '7', y: '2', value: 8.24175, label: '221'},
+{x: '8', y: '2', value: 8.05450237044365, label: '222'},
+{x: '9', y: '2', value: 8.7785, label: '223'},
+{x: '10', y: '2', value: 8.2697560589583, label: '224'},
+{x: '11', y: '2', value: 7.97625, label: '225'},
+{x: '12', y: '2', value: 8.0461868462242, label: '226'},
+{x: '13', y: '2', value: 8.18, label: '227'},
+{x: '14', y: '2', value: 8.5445, label: '228'},
+{x: '1', y: '3', value: 8.349620342779, label: '229'},
+{x: '2', y: '3', value: 8.445188350155, label: '230'},
+{x: '3', y: '3', value: 8.0985, label: '231'},
+{x: '4', y: '3', value: 7.9181525062816, label: '232'},
+{x: '5', y: '3', value: 8.56575, label: '233'},
+{x: '6', y: '3', value: 8.3426961947955, label: '234'},
+{x: '7', y: '3', value: 8.2439316631335, label: '235'},
+{x: '8', y: '3', value: 8.2685, label: '236'},
+{x: '9', y: '3', value: 8.0450197280701, label: '237'},
+{x: '10', y: '3', value: 7.93174272726195, label: '238'},
+{x: '11', y: '3', value: 8.0915, label: '239'},
+{x: '12', y: '3', value: 8.134, label: '240'},
+{x: '13', y: '3', value: 8.432, label: '241'},
+{x: '14', y: '3', value: 8.209, label: '242'},
+{x: '1', y: '4', value: 8.03, label: '243'},
+{x: '2', y: '4', value: 7.94275, label: '244'},
+{x: '3', y: '4', value: 8.374, label: '245'},
+{x: '4', y: '4', value: 7.8693082706767, label: '246'},
+{x: '5', y: '4', value: 8.3545, label: '247'},
+{x: '6', y: '4', value: 8.212382352941201, label: '248'},
+{x: '7', y: '4', value: 8.469, label: '249'},
+{x: '8', y: '4', value: 8.039739876905001, label: '250'},
+{x: '9', y: '4', value: 8.3023333333333, label: '251'},
+{x: '10', y: '4', value: 8.41691126574025, label: '252'},
+{x: '11', y: '4', value: 8.184, label: '253'},
+{x: '12', y: '4', value: 8.172, label: '254'},
+{x: '13', y: '4', value: 8.453, label: '255'},
+{x: '14', y: '4', value: 8.514, label: '256'},
+{x: '1', y: '5', value: 8.0584, label: '257'},
+{x: '2', y: '5', value: 8.4495, label: '258'},
+{x: '3', y: '5', value: 8.088, label: '259'},
+{x: '4', y: '5', value: 8.36820871040725, label: '260'},
+{x: '5', y: '5', value: 8.31652769333355, label: '261'},
+{x: '6', y: '5', value: 7.6810330188679, label: '262'},
+{x: '7', y: '5', value: 8.5059536833003, label: '263'},
+{x: '8', y: '5', value: 8.472999999999999, label: '264'},
+{x: '9', y: '5', value: 8.5265, label: '265'},
+{x: '10', y: '5', value: 8.177999999999999, label: '266'},
+{x: '11', y: '5', value: 7.989, label: '267'},
+{x: '12', y: '5', value: 8.4745, label: '268'},
+{x: '13', y: '5', value: 8.1325, label: '269'},
+{x: '14', y: '5', value: 8.08555413666621, label: '270'},
+{x: '1', y: '6', value: 8.422, label: '271'},
+{x: '2', y: '6', value: 8.180470173193951, label: '272'},
+{x: '3', y: '6', value: 8.51629559094643, label: '273'},
+{x: '4', y: '6', value: 8.297211949685499, label: '274'},
+{x: '5', y: '6', value: 8.1067093908629, label: '275'},
+{x: '6', y: '6', value: 8.186, label: '276'},
+{x: '7', y: '6', value: 8.01257959141704, label: '277'},
+{x: '8', y: '6', value: 7.9913816070174, label: '278'},
+{x: '9', y: '6', value: 8.2964894942503, label: '279'},
+{x: '10', y: '6', value: 8.25125, label: '280'},
+{x: '11', y: '6', value: 8.85651709289361, label: '281'},
+{x: '12', y: '6', value: 8.583, label: '282'},
+{x: '13', y: '6', value: 8.39, label: '283'},
+{x: '14', y: '6', value: 8.3266133909287, label: '284'},
+{x: '1', y: '7', value: 8.57325, label: '285'},
+{x: '2', y: '7', value: 8.0385, label: '286'},
+{x: '3', y: '7', value: 8.5884369511284, label: '287'},
+{x: '4', y: '7', value: 8.348893575928791, label: '288'},
+{x: '5', y: '7', value: 8.27460579009775, label: '289'},
+{x: '6', y: '7', value: 8.298, label: '290'},
+{x: '7', y: '7', value: 8.27193955396135, label: '291'},
+{x: '8', y: '7', value: 8.1421474582256, label: '292'},
+{x: '9', y: '7', value: 8.0605, label: '293'},
+{x: '10', y: '7', value: 8.0317321065498, label: '294'},
+{x: '11', y: '7', value: 8.35375, label: '295'},
+{x: '12', y: '7', value: 8.5115, label: '296'},
+{x: '13', y: '7', value: 8.37380727117015, label: '297'},
+{x: '14', y: '7', value: 8.745406473879, label: '298'},
+{x: '1', y: '8', value: 8.2711141529055, label: '299'},
+{x: '2', y: '8', value: 8.1154063351962, label: '300'},
+{x: '3', y: '8', value: 8.162, label: '301'},
+{x: '4', y: '8', value: 8.61198115417645, label: '302'},
+{x: '5', y: '8', value: 7.8585, label: '303'},
+{x: '6', y: '8', value: 7.869056422151001, label: '304'},
+{x: '7', y: '8', value: 8.542761476573599, label: '305'},
+{x: '8', y: '8', value: 8.122760946859099, label: '306'},
+{x: '9', y: '8', value: 8.15454044827395, label: '307'},
+{x: '10', y: '8', value: 7.856, label: '308'},
+{x: '11', y: '8', value: 8.32675, label: '309'},
+{x: '12', y: '8', value: 8.25773955904045, label: '310'},
+{x: '13', y: '8', value: 8.529, label: '311'},
+{x: '14', y: '8', value: 8.20366231649245, label: '312'},
+{x: '1', y: '9', value: 8.31475, label: '313'},
+{x: '2', y: '9', value: 8.2889689242486, label: '314'},
+{x: '3', y: '9', value: 8.281499491087201, label: '315'},
+{x: '4', y: '9', value: 7.8855626244344, label: '316'},
+{x: '5', y: '9', value: 8.0405034118837, label: '317'},
+{x: '6', y: '9', value: 8.259358907463701, label: '318'},
+{x: '7', y: '9', value: 8.31124217252396, label: '319'},
+{x: '8', y: '9', value: 8.271, label: '320'},
+{x: '9', y: '9', value: 8.30823475609755, label: '321'},
+{x: '10', y: '9', value: 8.326, label: '322'},
+{x: '11', y: '9', value: 8.3573524590164, label: '323'},
+{x: '12', y: '9', value: 7.96875, label: '324'},
+{x: '13', y: '9', value: 8.122, label: '325'},
+{x: '14', y: '9', value: 7.7435, label: '326'},
+{x: '1', y: '10', value: 7.992999999999999, label: '327'},
+{x: '2', y: '10', value: 8.375, label: '328'},
+{x: '3', y: '10', value: 8.205, label: '329'},
+{x: '4', y: '10', value: 8.229, label: '330'},
+{x: '5', y: '10', value: 8.2845, label: '331'},
+{x: '6', y: '10', value: 8.0965, label: '332'},
+{x: '7', y: '10', value: 8.46434528189, label: '333'},
+{x: '8', y: '10', value: 7.981363488743599, label: '334'},
+{x: '9', y: '10', value: 8.056150540509702, label: '335'},
+{x: '10', y: '10', value: 8.1815, label: '336'},
+{x: '11', y: '10', value: 8.3235, label: '337'},
+{x: '12', y: '10', value: 7.6295296985968, label: '338'},
+{x: '13', y: '10', value: 8.3549429274577, label: '339'},
+{x: '14', y: '10', value: 8.255, label: '340'},
+{x: '1', y: '11', value: 8.296118605137469, label: '341'},
+{x: '2', y: '11', value: 8.4110123700839, label: '342'},
+{x: '3', y: '11', value: 8.31, label: '343'},
+{x: '4', y: '11', value: 7.971862740273941, label: '344'},
+{x: '5', y: '11', value: 8.01, label: '345'},
+{x: '6', y: '11', value: 7.8186718870636, label: '346'},
+{x: '7', y: '11', value: 7.452000000000001, label: '347'},
+{x: '8', y: '11', value: 8.60175, label: '348'},
+{x: '9', y: '11', value: 8.4745217209709, label: '349'},
+{x: '10', y: '11', value: 8.193999999999999, label: '350'},
+{x: '11', y: '11', value: 8.496443135798499, label: '351'},
+{x: '12', y: '11', value: 8.5272703272995, label: '352'},
+{x: '13', y: '11', value: 8.6343230036156, label: '353'},
+{x: '14', y: '11', value: 8.1526684627884, label: '354'},
+{x: '1', y: '12', value: 8.496, label: '355'},
+{x: '2', y: '12', value: 8.4685, label: '356'},
+{x: '3', y: '12', value: 8.129, label: '357'},
+{x: '4', y: '12', value: 8.101375812383361, label: '358'},
+{x: '5', y: '12', value: 8.107999999999999, label: '359'},
+{x: '6', y: '12', value: 8.262, label: '360'},
+{x: '7', y: '12', value: 8.054, label: '361'},
+{x: '8', y: '12', value: 8.1533824077358, label: '362'},
+{x: '9', y: '12', value: 8.21, label: '363'},
+{x: '10', y: '12', value: 8.5388158272859, label: '364'},
+{x: '11', y: '12', value: 8.36974384407225, label: '365'},
+{x: '12', y: '12', value: 8.5595, label: '366'},
+{x: '13', y: '12', value: 8.309, label: '367'},
+{x: '14', y: '12', value: 7.9787113804004, label: '368'},
+{x: '1', y: '13', value: 8.354785488959001, label: '369'},
+{x: '2', y: '13', value: 7.9972367977869, label: '370'},
+{x: '3', y: '13', value: 8.45575, label: '371'},
+{x: '4', y: '13', value: 7.747999999999999, label: '372'},
+{x: '5', y: '13', value: 7.9255, label: '373'},
+{x: '6', y: '13', value: 7.90425, label: '374'},
+{x: '7', y: '13', value: 8.57648143499066, label: '375'},
+{x: '8', y: '13', value: 7.8259325794532, label: '376'},
+{x: '9', y: '13', value: 7.952000000000001, label: '377'},
+{x: '10', y: '13', value: 8.24093222360136, label: '378'},
+{x: '11', y: '13', value: 8.007985644975701, label: '379'},
+{x: '12', y: '13', value: 8.418057053994499, label: '380'},
+{x: '13', y: '13', value: 8.670517699114999, label: '381'},
+{x: '14', y: '13', value: 8.1886555394291, label: '382'},
+{x: '1', y: '14', value: 8.5375, label: '383'},
+{x: '2', y: '14', value: 8.2106967545639, label: '384'},
+{x: '3', y: '14', value: 8.1245, label: '385'},
+{x: '4', y: '14', value: 8.27375, label: '386'},
+{x: '5', y: '14', value: 8.41, label: '387'},
+{x: '6', y: '14', value: 8.291656824451099, label: '388'},
+{x: '7', y: '14', value: 8.69964551050505, label: '389'},
+{x: '8', y: '14', value: 8.759530467481401, label: '390'},
+{x: '9', y: '14', value: 8.056000000000001, label: '391'},
+{x: '10', y: '14', value: 8.5528875425626, label: '392'},
+{x: '11', y: '14', value: 8.355441176470599, label: '393'},
+{x: '12', y: '14', value: 8.935, label: '394'},
+{x: '13', y: '14', value: 8.77053436355975, label: '395'},
+{x: '14', y: '14', value: 8.607999999999999, label: '396'}
+];
+
+chart = anychart.heatMap(data);
+
+chart.container("container");
+chart.xScale().inverted(true);
+chart.yScale().inverted(false);
+chart.xAxis().title('Galactic Longitude (deg)');
+chart.yAxis().title('Galactic Latitude (deg)');
+chart.xAxis().orientation("bottom");
+chart.yAxis().labels(false)
+chart.xAxis().labels(false)
+chart.title("Minimum J Magnitude");
+chart.labels().format("{%label}");
+chart.tooltip().titleFormat("{%label}");
+chart.tooltip().format("{%value}");
+
+var customColorScale = anychart.scales.ordinalColor();
+customColorScale.ranges([
+  { less: 7.5999 },
+  { from: 7.6, to: 7.9999 },
+  { from: 8.0, to: 8.3999 },
+  { from: 8.4, to: 8.7999 },
+  { greater: 8.8 }
+]);
+
+customColorScale.colors(["#F9E79F", "#F5B041", "#E67E22", "#E74C3C", "#922B21"]);
+chart.colorScale(customColorScale);
+chart.legend(true);
+
+chart.draw();
+});
+
+</script>
+
+<blockquote class="blockquote text-center">
+        <button type="button" class="btn btn-light btn-sm">J Magnitude</button>
+        <button type="button" class="btn btn-light btn-sm"><a href="/generalK">K Magnitude</a></button>
+        <button type="button" class="btn btn-light btn-sm"><a href="/bDist">Brightness Distribution</a></button>
+        <button type="button" class="btn btn-light btn-sm"><a href="/generalN">Number of Stars</a></button>
+    </blockquote>
+
+
+<center>
+
+    <button type="button" class="btn btn-light btn-lg"><a href="/home">HOME</a></button>
+</center>
+</body>
+
+<footer>
+
+</footer>
+</html>

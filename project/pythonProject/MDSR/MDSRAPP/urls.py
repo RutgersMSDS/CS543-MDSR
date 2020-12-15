@@ -25,4 +25,7 @@ urlpatterns = [
     url(r'^nstarh/$', views.nstarh, name='nstarh'),
     url(r'^bDist/$', views.bDist, name='bDist'),
 
+    path('cities',views.getGraphCities),
+    path('graphs',views.getGraphImages)
+
 ]

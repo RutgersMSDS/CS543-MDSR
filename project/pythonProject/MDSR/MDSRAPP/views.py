@@ -1,5 +1,11 @@
+import json
+from MDSRAPP.utils import utils
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+
+
+
 # Create your views here.
 def hi(request): # statistics
     return render(request, 'MDSRAPP/hi.html')
@@ -31,6 +37,9 @@ def maxJh(request):
 def meanJh(request):
     return render(request, 'MDSRAPP/meanJh.html')
 
+def generalJ(request):
+    return render(request, 'MDSRAPP/generalJ.html')
+
 def minK(request):
     return render(request, 'MDSRAPP/minK.html')
 
@@ -49,6 +58,9 @@ def maxKh(request):
 def meanKh(request):
     return render(request, 'MDSRAPP/meanKh.html')
 
+def generalK(request):
+    return render(request, 'MDSRAPP/generalK.html')
+
 def nstar(request):
     return render(request, 'MDSRAPP/nstar.html')
 
@@ -57,3 +69,22 @@ def nstarh(request):
 
 def bDist(request):
     return render(request, 'MDSRAPP/bDist.html')
+
+def graphWaves(request):
+    return render(request, 'MDSRAPP/graphCity.html')
+
+@csrf_exempt
+def getGraphCities(request):
+    tileNumber = int(request.GET.get('tile'))
+
+    context = {"tile" : utils.getCitiesForTile(tileNumber)}
+    a = HttpResponse(json.dumps(context))
+    return a
+
+
+@csrf_exempt
+def getGraphImages(request):
+    tileNumber = int(request.GET.get('tile'))
+
+    context = {"tile" : utils.getGraphImageFilesNames(tileNumber)}
+    return HttpResponse(json.dumps(context))

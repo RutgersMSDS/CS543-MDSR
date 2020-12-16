@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
     <title>Graph World</title>
     <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -46,6 +46,11 @@
 
         .caption {
             display: block;
+        }
+
+        .responsive {
+            width: 100%;
+
         }
     </style>
 </head>
@@ -271,7 +276,7 @@
             hovermode:'closest',
             title: 'Graph City: ' + tileNumber.toString(),
             grid: {rows: rowCount, columns: columnCount, pattern: 'independent'},
-            width: screen.width,
+            width: screen.availWidth,
             shapes: [],
             annotations: []
         };
@@ -330,20 +335,20 @@
         for (var i = 0; i < imageFileNamesList.length; i++) {
             var new_div = document.createElement("div");
             new_div.className = "item";
-            new_div.style.width = ((screen.availWidth / 3)).toString();
+            new_div.style.width = "30%"//((screen.availWidth / 3)).toString();
 
             var label = document.createElement("span");
             label.className = "caption";
             label.innerText = "Building - " + (i + 1).toString();
 
             var image = new Image();
-            image.className = imageFileNamesList[i];
+            image.className = "responsive";
             filepath = "../static/imgs/graphs/" + imageFileNamesList[i];
 
             image.src = filepath;
             image.style.background = "#000000";
-            image.width = ((screen.availWidth / 3) - 150).toString();
-            image.height = image.width
+            //image.width = "20%"//((screen.availWidth / 3) - 150).toString();
+            //image.height = image.width
 
             new_div.appendChild(label);
             new_div.appendChild(image);
@@ -404,6 +409,225 @@
         $("#cities").hide()
         $("#graphs").show();
     });
+
+    function resP(id){
+        var d3 = Plotly.d3;
+
+        var parent_width = $("#"+id).parent().width();
+        //console.log("Width: ", parent_width)
+        var gd3 = d3.select(`div[id=${id}]`)
+            .style({
+                width: parent_width - 10,
+                //'margin-right': (100 - WIDTH_IN_PERCENT_OF_PARENT) / 2 + 'vh',
+                //'margin-top': (100 - HEIGHT_IN_PERCENT_OF_PARENT) / 2 + 'vh'
+            });
+        return gd3.node();
+    }
+
+    window.addEventListener('resize', function(){
+        Plotly.Plots.resize( resP('cities') );
+    });
+
+    var data = [
+        {x: '1', y: '1', value: 1.399123, label: '201'},
+        {x: '2', y: '1', value: 1.382993, label: '202'},
+        {x: '3', y: '1', value: 1.57444, label: '203'},
+        {x: '4', y: '1', value: 1.63562, label: '204'},
+        {x: '5', y: '1', value: 1.08776, label: '205'},
+        {x: '6', y: '1', value: 1.643781, label: '206'},
+        {x: '7', y: '1', value: 1.331178, label: '207'},
+        {x: '8', y: '1', value: 1.774039, label: '208'},
+        {x: '9', y: '1', value: 1.548021, label: '209'},
+        {x: '10', y: '1', value: 1.468706, label: '210'},
+        {x: '11', y: '1', value: 1.843252, label: '211'},
+        {x: '12', y: '1', value: 1.73941, label: '212'},
+        {x: '13', y: '1', value: 1.695746, label: '213'},
+        {x: '14', y: '1', value: 1.334366, label: '214'},
+        {x: '1', y: '2', value: 1.585924, label: '215'},
+        {x: '2', y: '2', value: 1.681644, label: '216'},
+        {x: '3', y: '2', value: 1.919827, label: '217'},
+        {x: '4', y: '2', value: 2.024957, label: '218'},
+        {x: '5', y: '2', value: 1.734779, label: '219'},
+        {x: '6', y: '2', value: 1.802673, label: '220'},
+        {x: '7', y: '2', value: 2.137234, label: '221'},
+        {x: '8', y: '2', value: 2.207425, label: '222'},
+        {x: '9', y: '2', value: 1.976133, label: '223'},
+        {x: '10', y: '2', value: 2.230271, label: '224'},
+        {x: '11', y: '2', value: 2.248867, label: '225'},
+        {x: '12', y: '2', value: 2.234908, label: '226'},
+        {x: '13', y: '2', value: 2.061087, label: '227'},
+        {x: '14', y: '2', value: 1.491003, label: '228'},
+        {x: '1', y: '3', value: 1.733738, label: '229'},
+        {x: '2', y: '3', value: 2.186654, label: '230'},
+        {x: '3', y: '3', value: 1.931866, label: '231'},
+        {x: '4', y: '3', value: 2.658841, label: '232'},
+        {x: '5', y: '3', value: 2.816357, label: '233'},
+        {x: '6', y: '3', value: 2.885889, label: '234'},
+        {x: '7', y: '3', value: 2.501685, label: '235'},
+        {x: '8', y: '3', value: 2.222797, label: '236'},
+        {x: '9', y: '3', value: 2.969227, label: '237'},
+        {x: '10', y: '3', value: 3.077436, label: '238'},
+        {x: '11', y: '3', value: 2.612029, label: '239'},
+        {x: '12', y: '3', value: 2.514074, label: '240'},
+        {x: '13', y: '3', value: 2.595791, label: '241'},
+        {x: '14', y: '3', value: 2.16461, label: '242'},
+        {x: '1', y: '4', value: 1.959829, label: '243'},
+        {x: '2', y: '4', value: 2.625376, label: '244'},
+        {x: '3', y: '4', value: 2.364926, label: '245'},
+        {x: '4', y: '4', value: 3.303155, label: '246'},
+        {x: '5', y: '4', value: 3.367866, label: '247'},
+        {x: '6', y: '4', value: 3.425851, label: '248'},
+        {x: '7', y: '4', value: 2.728265, label: '249'},
+        {x: '8', y: '4', value: 3.261585, label: '250'},
+        {x: '9', y: '4', value: 3.572046, label: '251'},
+        {x: '10', y: '4', value: 3.455322, label: '252'},
+        {x: '11', y: '4', value: 3.105875, label: '253'},
+        {x: '12', y: '4', value: 3.035178, label: '254'},
+        {x: '13', y: '4', value: 2.84762, label: '255'},
+        {x: '14', y: '4', value: 2.641608, label: '256'},
+        {x: '1', y: '5', value: 2.900681, label: '257'},
+        {x: '2', y: '5', value: 2.64373, label: '258'},
+        {x: '3', y: '5', value: 2.994619, label: '259'},
+        {x: '4', y: '5', value: 3.726389, label: '260'},
+        {x: '5', y: '5', value: 3.81276, label: '261'},
+        {x: '6', y: '5', value: 3.653118, label: '262'},
+        {x: '7', y: '5', value: 3.550876, label: '263'},
+        {x: '8', y: '5', value: 3.234889, label: '264'},
+        {x: '9', y: '5', value: 3.584437, label: '265'},
+        {x: '10', y: '5', value: 3.379801, label: '266'},
+        {x: '11', y: '5', value: 3.597268, label: '267'},
+        {x: '12', y: '5', value: 2.881015, label: '268'},
+        {x: '13', y: '5', value: 2.737636, label: '269'},
+        {x: '14', y: '5', value: 3.062617, label: '270'},
+        {x: '1', y: '6', value: 2.886107, label: '271'},
+        {x: '2', y: '6', value: 2.89442, label: '272'},
+        {x: '3', y: '6', value: 3.352879, label: '273'},
+        {x: '4', y: '6', value: 3.847945, label: '274'},
+        {x: '5', y: '6', value: 4.206454, label: '275'},
+        {x: '6', y: '6', value: 3.905045, label: '276'},
+        {x: '7', y: '6', value: 3.521544, label: '277'},
+        {x: '8', y: '6', value: 3.970862, label: '278'},
+        {x: '9', y: '6', value: 4.357527, label: '279'},
+        {x: '10', y: '6', value: 4.115993, label: '280'},
+        {x: '11', y: '6', value: 3.695493, label: '281'},
+        {x: '12', y: '6', value: 3.175469, label: '282'},
+        {x: '13', y: '6', value: 3.221126, label: '283'},
+        {x: '14', y: '6', value: 3.536829, label: '284'},
+        {x: '1', y: '7', value: 2.758634, label: '285'},
+        {x: '2', y: '7', value: 3.339493, label: '286'},
+        {x: '3', y: '7', value: 3.301236, label: '287'},
+        {x: '4', y: '7', value: 3.418025, label: '288'},
+        {x: '5', y: '7', value: 4.515069, label: '289'},
+        {x: '6', y: '7', value: 4.162211, label: '290'},
+        {x: '7', y: '7', value: 4.097944, label: '291'},
+        {x: '8', y: '7', value: 4.196605, label: '292'},
+        {x: '9', y: '7', value: 4.4264, label: '293'},
+        {x: '10', y: '7', value: 4.740866, label: '294'},
+        {x: '11', y: '7', value: 4.3995, label: '295'},
+        {x: '12', y: '7', value: 2.834042, label: '296'},
+        {x: '13', y: '7', value: 3.065617, label: '297'},
+        {x: '14', y: '7', value: 3.690386, label: '298'},
+        {x: '1', y: '8', value: 2.683979, label: '299'},
+        {x: '2', y: '8', value: 3.298312, label: '300'},
+        {x: '3', y: '8', value: 3.164848, label: '301'},
+        {x: '4', y: '8', value: 4.053418, label: '302'},
+        {x: '5', y: '8', value: 3.764843, label: '303'},
+        {x: '6', y: '8', value: 3.473787, label: '304'},
+        {x: '7', y: '8', value: 3.691971, label: '305'},
+        {x: '8', y: '8', value: 4.536525, label: '306'},
+        {x: '9', y: '8', value: 4.514594, label: '307'},
+        {x: '10', y: '8', value: 4.449772, label: '308'},
+        {x: '11', y: '8', value: 4.571886, label: '309'},
+        {x: '12', y: '8', value: 4.103044, label: '310'},
+        {x: '13', y: '8', value: 3.050926, label: '311'},
+        {x: '14', y: '8', value: 3.997931, label: '312'},
+        {x: '1', y: '9', value: 2.148252, label: '313'},
+        {x: '2', y: '9', value: 2.108223, label: '314'},
+        {x: '3', y: '9', value: 3.428097, label: '315'},
+        {x: '4', y: '9', value: 3.440969, label: '316'},
+        {x: '5', y: '9', value: 3.371572, label: '317'},
+        {x: '6', y: '9', value: 3.010465, label: '318'},
+        {x: '7', y: '9', value: 3.008121, label: '319'},
+        {x: '8', y: '9', value: 3.84983, label: '320'},
+        {x: '9', y: '9', value: 3.458118, label: '321'},
+        {x: '10', y: '9', value: 3.367557, label: '322'},
+        {x: '11', y: '9', value: 3.167142, label: '323'},
+        {x: '12', y: '9', value: 3.000696, label: '324'},
+        {x: '13', y: '9', value: 2.501609, label: '325'},
+        {x: '14', y: '9', value: 2.86226, label: '326'},
+        {x: '1', y: '10', value: 1.997329, label: '327'},
+        {x: '2', y: '10', value: 1.90238, label: '328'},
+        {x: '3', y: '10', value: 2.640191, label: '329'},
+        {x: '4', y: '10', value: 2.573045, label: '330'},
+        {x: '5', y: '10', value: 2.757331, label: '331'},
+        {x: '6', y: '10', value: 2.609702, label: '332'},
+        {x: '7', y: '10', value: 2.89037, label: '333'},
+        {x: '8', y: '10', value: 2.784575, label: '334'},
+        {x: '9', y: '10', value: 2.881855, label: '335'},
+        {x: '10', y: '10', value: 2.931994, label: '336'},
+        {x: '11', y: '10', value: 2.542177, label: '337'},
+        {x: '12', y: '10', value: 3.263923, label: '338'},
+        {x: '13', y: '10', value: 2.603588, label: '339'},
+        {x: '14', y: '10', value: 3.015528, label: '340'},
+        {x: '1', y: '11', value: 2.040777, label: '341'},
+        {x: '2', y: '11', value: 2.697211, label: '342'},
+        {x: '3', y: '11', value: 2.958569, label: '343'},
+        {x: '4', y: '11', value: 3.242736, label: '344'},
+        {x: '5', y: '11', value: 3.22047, label: '345'},
+        {x: '6', y: '11', value: 3.898456, label: '346'},
+        {x: '7', y: '11', value: 4.006247, label: '347'},
+        {x: '8', y: '11', value: 4.265745, label: '348'},
+        {x: '9', y: '11', value: 3.855901, label: '349'},
+        {x: '10', y: '11', value: 3.548349, label: '350'},
+        {x: '11', y: '11', value: 4.137241, label: '351'},
+        {x: '12', y: '11', value: 3.830855, label: '352'},
+        {x: '13', y: '11', value: 3.781682, label: '353'},
+        {x: '14', y: '11', value: 3.274781, label: '354'},
+        {x: '1', y: '12', value: 3.008393, label: '355'},
+        {x: '2', y: '12', value: 3.278285, label: '356'},
+        {x: '3', y: '12', value: 3.218617, label: '357'},
+        {x: '4', y: '12', value: 3.783094, label: '358'},
+        {x: '5', y: '12', value: 3.961437, label: '359'},
+        {x: '6', y: '12', value: 4.167142, label: '360'},
+        {x: '7', y: '12', value: 4.497397, label: '361'},
+        {x: '8', y: '12', value: 4.066063, label: '362'},
+        {x: '9', y: '12', value: 4.463307, label: '363'},
+        {x: '10', y: '12', value: 4.516674, label: '364'},
+        {x: '11', y: '12', value: 4.411708, label: '365'},
+        {x: '12', y: '12', value: 4.366395, label: '366'},
+        {x: '13', y: '12', value: 4.070848, label: '367'},
+        {x: '14', y: '12', value: 3.467062, label: '368'},
+        {x: '1', y: '13', value: 2.964196, label: '369'},
+        {x: '2', y: '13', value: 3.391629, label: '370'},
+        {x: '3', y: '13', value: 3.479262, label: '371'},
+        {x: '4', y: '13', value: 3.311537, label: '372'},
+        {x: '5', y: '13', value: 4.666841, label: '373'},
+        {x: '6', y: '13', value: 4.488339, label: '374'},
+        {x: '7', y: '13', value: 4.085177, label: '375'},
+        {x: '8', y: '13', value: 3.890613, label: '376'},
+        {x: '9', y: '13', value: 3.863582, label: '377'},
+        {x: '10', y: '13', value: 4.495853, label: '378'},
+        {x: '11', y: '13', value: 4.405261, label: '379'},
+        {x: '12', y: '13', value: 4.211861, label: '380'},
+        {x: '13', y: '13', value: 3.845982, label: '381'},
+        {x: '14', y: '13', value: 3.476476, label: '382'},
+        {x: '1', y: '14', value: 2.215181, label: '383'},
+        {x: '2', y: '14', value: 3.398751, label: '384'},
+        {x: '3', y: '14', value: 3.112811, label: '385'},
+        {x: '4', y: '14', value: 3.353753, label: '386'},
+        {x: '5', y: '14', value: 3.555555, label: '387'},
+        {x: '6', y: '14', value: 2.488265, label: '388'},
+        {x: '7', y: '14', value: 3.716884, label: '389'},
+        {x: '8', y: '14', value: 4.219276, label: '390'},
+        {x: '9', y: '14', value: 4.10305, label: '391'},
+        {x: '10', y: '14', value: 3.750957, label: '392'},
+        {x: '11', y: '14', value: 3.939193, label: '393'},
+        {x: '12', y: '14', value: 3.167416, label: '394'},
+        {x: '13', y: '14', value: 3.527123, label: '395'},
+        {x: '14', y: '14', value: 2.336196, label: '396'}
+    ];
+
+
 
 </script>
 

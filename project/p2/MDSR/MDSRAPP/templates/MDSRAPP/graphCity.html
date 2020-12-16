@@ -25,11 +25,7 @@
 
     </center>
 
-    <button type="button" class="btn btn-light btn-lg">City View</button>
-    <button type="button" class="btn btn-light btn-lg">Graph View</button>
 <canvas width="400" height="20"></canvas>
-
-
 
     <div id="cities" style="height: 1600px;">
 
@@ -287,18 +283,14 @@
 
     function placeGraphImages(imageFileNamesList){
         document.getElementById("graphs").style.height = "1600px";
-        var layout = {
-            showlegend: false,
-            hovermode:'closest',
-            title: 'Graph: ' + tileNumber.toString(),
-            grid: {rows: 3, columns: 3, pattern: 'independent'},
-            width: 1500,
-            shapes: [],
-            annotations: []
-        };
 
         for (var fileName in imageFileNamesList){
+            function GFG_Fun() {
+                var img = document.createElement('img');
+                img.src = '';
+                document.getElementById('graphs').appendChild(img);
 
+            }
         }
 
 
